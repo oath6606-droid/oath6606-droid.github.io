@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <title>卡通贪吃蛇小游戏</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="纯前端静态网页实现的卡通风格贪吃蛇小游戏，支持键盘与触屏操作。"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <div class="logo">
+          <span class="logo-snake-head">🐍</span>
+          <span class="logo-text">卡通贪吃蛇</span>
+        </div>
+        <div class="score-panel">
+          <div class="score-item">
+            <span class="label">得分</span>
+            <span id="score" class="value">0</span>
+          </div>
+          <div class="score-item">
+            <span class="label">最高分</span>
+            <span id="bestScore" class="value">0</span>
+          </div>
+          <div class="score-item">
+            <span class="label">速度</span>
+            <span id="speed" class="value">1x</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="main">
+        <section class="left-panel">
+          <div class="game-card">
+            <div class="game-card-header">
+              <h2>游戏区域</h2>
+              <span class="hint">方向键控制 · 支持触屏</span>
+            </div>
+            <div class="game-wrapper">
+              <canvas id="gameCanvas" width="460" height="460"></canvas>
+              <div id="overlay" class="overlay overlay--visible">
+                <div class="overlay-content">
+                  <h3 id="overlayTitle">准备开始</h3>
+                  <p id="overlayMessage">按 空格 或 点击下方“开始游戏”</p>
+                  <button id="btnStartOverlay" class="btn btn-primary">
+                    开始游戏
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="controls">
+              <div class="control-buttons">
+                <button id="btnStart" class="btn btn-primary">开始</button>
+                <button id="btnPause" class="btn btn-secondary">暂停</button>
+                <button id="btnRestart" class="btn btn-ghost">重新开始</button>
+                <div class="difficulty">
+                  <label for="difficultySelect">难度</label>
+                  <select id="difficultySelect">
+                    <option value="easy">简单</option>
+                    <option value="normal" selected>普通</option>
+                    <option value="hard">困难</option>
+                    <option value="hell">地狱</option>
+                  </select>
+                </div>
+              </div>
+              <div class="control-info">
+                <p>电脑：使用 ↑ ↓ ← → 或 W A S D 控制方向，空格暂停 / 开始。</p>
+                <p>手机 / 平板：点击方向键或在游戏区域滑动手指。</p>
+              </div>
+              <div class="card card-inline">
+                <h2>玩法说明</h2>
+                <ul class="rules">
+                  <li>每吃到一个小水果，长度 +1，得分 +10。</li>
+                  <li>每累计 5 个水果，蛇会变快一点，更刺激！</li>
+                  <li>撞到墙壁或自己身体，游戏结束。</li>
+                  <li>随时可以按“暂停”或按空格键暂停游戏。</li>
+                </ul>
+              </div>
+
+              <div class="card card-inline">
+                <h2>操作方式</h2>
+                <div class="touch-controls">
+                  <div class="touch-grid">
+                    <button data-dir="up" class="touch-btn">▲</button>
+                    <div class="touch-row">
+                      <button data-dir="left" class="touch-btn">◀</button>
+                      <button data-dir="down" class="touch-btn">▼</button>
+                      <button data-dir="right" class="touch-btn">▶</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>纯前端静态实现 · 可本地直接打开试玩</span>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
+
