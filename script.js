@@ -624,9 +624,17 @@ if (difficultySelect) {
 function resizeCanvasForDisplay() {
   const rect = canvas.getBoundingClientRect();
   const dpr = window.devicePixelRatio || 1;
-  canvas.width = rect.width * dpr;
-  canvas.height = rect.width * dpr; // 保持方形
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  
+  // 确保Canvas保持方形比例（1:1，因为cols和rows相同）
+  const squareSize = Math.min(rect.width, rect.height);
+  
+  // 设置Canvas的实际像素尺寸，确保与显示尺寸一致
+  canvas.width = squareSize * dpr;
+  canvas.height = squareSize * dpr;
+  
+  // 清除任何变换，使用默认坐标系
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
+  
   computeCellSize();
   draw();
 }
